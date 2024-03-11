@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/utils/app_colors.dart';
 import 'package:portfolio/views/about_me.dart';
 import 'package:portfolio/views/landing_view.dart';
 import 'package:portfolio/views/project_view.dart';
@@ -27,14 +28,18 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: MyColors.backgroundColor,
       body: SingleChildScrollView(
         controller: scrollController,
-        child: Column(
-          children: [
-            LandingView(pixel: pixel,),
-           AboutMe(pixels: pixel,),
-           ProjectView(pixels: pixel,)
-          ],
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24.0),
+          child: Column(
+            children: [
+              LandingView(pixel: pixel,),
+             AboutMe(pixels: pixel,),
+             ProjectView(pixels: pixel,)
+            ],
+          ),
         ),
       ),
     );

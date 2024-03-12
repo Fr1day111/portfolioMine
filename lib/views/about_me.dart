@@ -14,18 +14,16 @@ class AboutMe extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            AnimatedOpacity(
-              curve: Curves.ease,
-              opacity: pixels >= 400 ? 1 : 0,
-              duration: const Duration(milliseconds: 1000),
-              child: AnimatedPadding(
-                curve: Curves.ease,
-                duration: const Duration(milliseconds: 1000),
-                padding: EdgeInsets.only(right: pixels >= 400 ? 0 : 50),
-                child: Container(
+        child: AnimatedOpacity(
+          opacity: pixels >= 400 ? 1 : 0,
+          duration: const Duration(milliseconds: 500),
+          child: AnimatedPadding(
+            duration: const Duration(milliseconds: 500),
+            padding: EdgeInsets.only(left: pixels >= 400 ? 0 : 300),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Container(
                   width: MediaQuery.of(context).size.width * 0.4,
                   height: MediaQuery.of(context).size.width * 0.4,
                   decoration: BoxDecoration(
@@ -33,20 +31,10 @@ class AboutMe extends StatelessWidget {
                       border: Border.all(),
                       image: const DecorationImage(
                         fit: BoxFit.cover,
-                          image: NetworkImage(
-                        'https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-                      ))),
+                          image: AssetImage('assets/aboutPhoto.jpg'))),
                 ),
-              ),
-            ),
-            SizedBox(width: MediaQuery.of(context).size.width*0.1,),
-            AnimatedOpacity(
-              opacity: pixels >= 400 ? 1 : 0,
-              duration: const Duration(milliseconds: 500),
-              child: AnimatedPadding(
-                duration: const Duration(milliseconds: 500),
-                padding: EdgeInsets.only(left: pixels >= 400 ? 0 : 50),
-                child: Column(
+                SizedBox(width: MediaQuery.of(context).size.width*0.1,),
+                Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -64,9 +52,9 @@ class AboutMe extends StatelessWidget {
                     )
                   ],
                 ),
-              ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );

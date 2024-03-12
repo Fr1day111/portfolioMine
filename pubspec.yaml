@@ -37,7 +37,9 @@ dependencies:
   cupertino_icons: ^1.0.6
   google_fonts: ^6.2.0
   flutter_polygon: ^0.3.0+2
-  neumorphic_ui: ^1.0.1
+  sidebarx: ^0.16.3
+  hooks_riverpod: ^2.1.3
+  flutter_hooks: ^0.18.5+1
 
 dev_dependencies:
   flutter_test:
@@ -63,10 +65,9 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-   - assets/profile.webp
-   - assets/profile2.png
-   - assets/profile3.png
    - assets/profilee.png
+   - assets/aboutPhoto.jpg
+   - assets/logo/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

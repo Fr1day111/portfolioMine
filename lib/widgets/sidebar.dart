@@ -23,7 +23,6 @@ class _MySideBarState extends State<MySideBar> {
 
   @override
   Widget build(BuildContext context) {
-    print(widget.pixels);
     return SidebarX(
       showToggleButton: false,
       theme: SidebarXTheme(

@@ -12,4 +12,8 @@ class MyTextStyle{
       fontSize: 40,color: MyColors.primaryColor);
   static const aboutUsStyle = TextStyle(fontFamily: 'Mina',
       fontSize: 20,color: MyColors.primaryColor);
+  static const academyStyle = TextStyle(fontFamily: 'Mina',
+      fontSize: 30,color: Colors.white,fontWeight: FontWeight.bold);
+  static const academySmallStyle = TextStyle(fontFamily: 'Mina',
+      fontSize: 20,color: Colors.white);
 }

@@ -47,7 +47,7 @@ class JourneyTimeLine extends StatelessWidget {
                     child: Center(
                       child: SizedBox(
                           height: 100,
-                          width: MediaQuery.of(context).size.width * 0.3,
+                          width: MediaQuery.of(context).size.width * 0.25,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [

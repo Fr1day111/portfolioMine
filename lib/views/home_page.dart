@@ -56,10 +56,10 @@ class _HomePageState extends State<HomePage> {
                   MySkillsView(
                     pixel: pixel,
                   ),
-                  JourneyTimeLine(pixel: pixel,),
-                  // ProjectView(
-                  //   pixels: pixel,
-                  // )
+                 JourneyTimeLine(pixel: pixel,),
+                  ProjectView(
+                    pixels: pixel,
+                  )
                 ],
               ),
             ),

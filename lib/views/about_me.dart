@@ -14,13 +14,13 @@ class AboutMe extends StatelessWidget {
     return SizedBox(
       height: 900,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 0),
+        padding: const EdgeInsets.symmetric(vertical: 8.0),
         child: pixels>=200?Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Container(
-              width: MediaQuery.of(context).size.width * 0.4,
-              height: MediaQuery.of(context).size.width * 0.4,
+              width: MediaQuery.of(context).size.width * 0.3,
+              height: MediaQuery.of(context).size.width * 0.3,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(),

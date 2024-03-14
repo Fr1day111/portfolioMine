@@ -22,7 +22,7 @@ class LandingView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              width: MediaQuery.of(context).size.width * 0.35,
+              width: MediaQuery.of(context).size.width * 0.3,
               child: FittedBox(
                 fit: BoxFit.scaleDown,
                 child: const Column(

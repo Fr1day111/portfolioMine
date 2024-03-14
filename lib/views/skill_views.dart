@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:portfolio/utils/models.dart';
 
@@ -13,20 +15,23 @@ class MySkillsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 100.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text(
-            'Technologies I have expertise with:',
-            style: MyTextStyle.subHeadingStyle,
-          ),const SizedBox(height: 50,),
-          SizedBox(
-            width: MediaQuery.of(context).size.width * 0.8,
-            child: GridView.builder(
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width * 0.7,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            FittedBox(
+              fit: BoxFit.scaleDown,
+              child: const Text(
+                'Technologies I have expertise with:',
+                style: MyTextStyle.subHeadingStyle,
+              ),
+            ),const SizedBox(height: 50,),
+            GridView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: mySkills.length,
-                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                gridDelegate:  const SliverGridDelegateWithMaxCrossAxisExtent(
                     maxCrossAxisExtent: 200),
                 itemBuilder: (context, index) {
                   Skills skill = mySkills[index];
@@ -38,8 +43,8 @@ class MySkillsView extends StatelessWidget {
                     height: 100,
                   )):Container();
                 }),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

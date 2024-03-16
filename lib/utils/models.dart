@@ -12,6 +12,8 @@ List<Skills> mySkills = [
   Skills(title: 'Git', photoPath: '$homePath/git.png'),
   Skills(title: 'My Sql', photoPath: '$homePath/mySql.png'),
   Skills(title: 'Python', photoPath: '$homePath/python.png'),
+  Skills(title: 'C', photoPath: '$homePath/C.png'),
+  Skills(title: 'C++', photoPath: '$homePath/C++.png'),
 ];
 String homePath = 'assets/logo';
 

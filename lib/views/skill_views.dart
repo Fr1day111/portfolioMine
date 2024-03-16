@@ -16,13 +16,13 @@ class MySkillsView extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 100.0),
       child: SizedBox(
-        width: MediaQuery.of(context).size.width * 0.7,
+        width: MediaQuery.of(context).size.width*0.9 ,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            FittedBox(
+            const FittedBox(
               fit: BoxFit.scaleDown,
-              child: const Text(
+              child: Text(
                 'Technologies I have expertise with:',
                 style: MyTextStyle.subHeadingStyle,
               ),

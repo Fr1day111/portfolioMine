@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:portfolio/utils/app_colors.dart';
+import 'package:portfolio/view_mobile/mobile_aboutMe.dart';
 import 'package:portfolio/view_mobile/mobile_landing_view.dart';
 import 'package:portfolio/views/about_me.dart';
 import 'package:portfolio/views/journeyTimeLine.dart';
@@ -35,35 +36,30 @@ class _MobileHomePageState extends State<MobileHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MyColors.backgroundColor,
-      body: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-         // Center(child: MySideBar(pixels: pixel)),
-          SingleChildScrollView(
-            controller: scrollController,
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*0.05),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  MobileLandingView(
-                    pixel: pixel,
-                  ),
-                  AboutMe(
-                    pixels: pixel,
-                  ),
-                  MySkillsView(
-                    pixel: pixel,
-                  ),
-                  JourneyTimeLine(pixel: pixel,),
-                  ProjectView(
-                    pixels: pixel,
-                  )
-                ],
+      body: SingleChildScrollView(
+        controller: scrollController,
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*0.05),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              MobileLandingView(
+                pixel: pixel,
               ),
-            ),
+              MobileAboutMe(
+                pixels: pixel,
+              ),
+              MySkillsView(
+                pixel: pixel,
+              ),
+              JourneyTimeLine(pixel: pixel,),
+              ProjectView(
+                pixels: pixel,
+                isMobile: true,
+              )
+            ],
           ),
-        ],
+        ),
       ),
     );
   }

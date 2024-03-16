@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_polygon/flutter_polygon.dart';
@@ -11,51 +12,64 @@ class MobileLandingView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
-      child: SizedBox(
-        height: 1000,
-        child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(
-                  //height: 700,
-                  width: MediaQuery.of(context).size.width * 0.7,
-                  child: ClipPolygon(
-                    sides: 5,
-                    borderRadius: 5.0,
-                    rotate: 90.0,
-                    boxShadows: [
-                      PolygonBoxShadow(color: Colors.black, elevation: 1.0),
-                      PolygonBoxShadow(
-                          color: MyColors.primaryColor, elevation: 5.0)
-                    ],
-                    child: Center(
-                      child: Padding(
-                        padding: EdgeInsets.only(
-                            top: MediaQuery.of(context).size.width * 0.15),
-                        child: Image.asset(
-                          'assets/profilee.png',
-                        ),
+    return SizedBox(
+      height: 1000,
+      width: MediaQuery.of(context).size.width,
+      child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const SizedBox(height: 50,),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.9,
+                child: ClipPolygon(
+                  sides: 5,
+                  borderRadius: 5.0,
+                  rotate: 90.0,
+                  boxShadows: [
+                    PolygonBoxShadow(color: Colors.black, elevation: 1.0),
+                    PolygonBoxShadow(
+                        color: MyColors.primaryColor, elevation: 5.0)
+                  ],
+                  child: Center(
+                    child: Padding(
+                      padding: EdgeInsets.only(
+                          top: MediaQuery.of(context).size.width * 0.15),
+                      child: Image.asset(
+                        'assets/profilee.png',
                       ),
                     ),
                   ),
-                ).animate().fadeIn().moveX(duration: 500.ms,begin: 200),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.7,
+                ),
+              ).animate().fadeIn().moveX(duration: 500.ms,begin: 200),
+              Center(
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.8,
                   child: FittedBox(
                     fit: BoxFit.scaleDown,
-                    child: const Column(
+                    child:  Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Hello,\nI am Sudip Shrestha',
-                            style: MyTextStyle.headingStyle),
-                        Text(
+                        const Text('Hello, ',
+                            style: MyTextStyle.headingStyleMobile),
+                        Row(
+                          children: [
+                            const Text('I am ',
+                                style: MyTextStyle.headingStyleMobile),
+                            AnimatedTextKit(
+                                pause: const Duration(seconds: 1),
+                                repeatForever: true,
+                                animatedTexts: [
+                                  TypewriterAnimatedText('Sudip Shrestha',textStyle: MyTextStyle.headingStyleMobile,speed: const Duration(milliseconds: 100),cursor: '|'),
+                                  TypewriterAnimatedText('सुदिप श्रेष्ठ',textStyle: MyTextStyle.headingStyleMobile,speed: const Duration(milliseconds: 100),cursor: '|'),
+                                ]),
+                          ],
+                        ),
+                        const Text(
                           'Computer Engineer | Flutter Developer',
-                          style: MyTextStyle.subHeadingStyle,
+                          style: MyTextStyle.subHeadingStyleMobile,
                         )
                       ],
                     ).animate(
@@ -63,12 +77,12 @@ class MobileLandingView extends StatelessWidget {
                     ).fadeIn(delay: 500.ms).moveY(),
                   ),
                 ),
-                // SizedBox(
-                //     height: MediaQuery.of(context).size.width*0.1
-                // ),
-              ],
-            )),
-      ),
+              ),
+              // SizedBox(
+              //     height: MediaQuery.of(context).size.width*0.1
+              // ),
+            ],
+          )),
     );
   }
 }

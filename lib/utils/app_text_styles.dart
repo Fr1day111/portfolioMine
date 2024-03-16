@@ -7,11 +7,18 @@ class MyTextStyle{
 
   static const headingStyle = TextStyle(fontFamily: 'Mina',
       fontSize: 90,color: MyColors.primaryColor);
-
+  static const headingStyleMobile = TextStyle(fontFamily: 'Mina',
+      fontSize: 60,color: MyColors.primaryColor);
   static const subHeadingStyle = TextStyle(fontFamily: 'Mina',
       fontSize: 40,color: MyColors.primaryColor);
+  static const subHeadingStyleMobile = TextStyle(fontFamily: 'Mina',
+      fontSize: 30,color: MyColors.primaryColor);
+  static const appBarStyle = TextStyle(fontFamily: 'Mina',
+      fontSize: 25,color: MyColors.primaryColor,fontWeight: FontWeight.bold);
   static const aboutUsStyle = TextStyle(fontFamily: 'Mina',
       fontSize: 20,color: MyColors.primaryColor);
+  static const aboutUsStyleMobile = TextStyle(fontFamily: 'Mina',
+      fontSize: 15,color: MyColors.primaryColor);
   static const academyStyle = TextStyle(fontFamily: 'Mina',
       fontSize: 30,color: Colors.white,fontWeight: FontWeight.bold);
   static const academySmallStyle = TextStyle(fontFamily: 'Mina',

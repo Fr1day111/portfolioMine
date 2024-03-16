@@ -15,7 +15,7 @@ class JourneyTimeLine extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 100.0),
       child: SizedBox(
-        width: MediaQuery.of(context).size.width * 0.8,
+        width: MediaQuery.of(context).size.width*0.9,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

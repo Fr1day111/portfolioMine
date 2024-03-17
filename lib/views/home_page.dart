@@ -11,7 +11,6 @@ import 'package:portfolio/views/landing_view.dart';
 import 'package:portfolio/views/project_view.dart';
 import 'package:portfolio/views/skill_views.dart';
 import 'package:portfolio/widgets/appbar_buttons.dart';
-import 'package:portfolio/widgets/sidebar.dart';
 import 'package:portfolio/widgets/view_breaker.dart';
 
 class HomePage extends StatefulWidget {
@@ -58,17 +57,7 @@ class _HomePageState extends State<HomePage> {
                 padding: EdgeInsets.only(right: MediaQuery.of(context).size.width*0.08),
                 child:  FittedBox(
                   fit: BoxFit.scaleDown,
-                  child: MyTabBar(pixel: pixel,)
-                  // Row(
-                  //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  //   children: [
-                  //     Text('Home',style: MyTextStyle.appBarStyle,),
-                  //     Text('About Me',style: MyTextStyle.appBarStyle,),
-                  //     Text('Journey',style: MyTextStyle.appBarStyle,),
-                  //     Text('Projects',style: MyTextStyle.appBarStyle,),
-                  //     Text('Contact Me',style: MyTextStyle.appBarStyle,),
-                  //   ],
-                  // ),
+                  child: MyTabBar(pixel: pixel,scrollController: scrollController,)
                 ),
               )
             ],

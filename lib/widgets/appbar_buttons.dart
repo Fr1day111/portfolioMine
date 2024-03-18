@@ -41,6 +41,41 @@ class _MyTabBarState extends State<MyTabBar>with TickerProviderStateMixin {
   }
 }
 
+class MyTabBarMobile extends StatefulWidget {
+  const MyTabBarMobile({required this.pixel,required this.scrollController,super.key});
+
+  final double pixel;
+  final ScrollController scrollController;
+
+  @override
+  State<MyTabBarMobile> createState() => _MyTabBarMobileState();
+}
+
+class _MyTabBarMobileState extends State<MyTabBarMobile>with TickerProviderStateMixin{
+  final _tabs = const [
+    Tab(icon: FittedBox(fit:BoxFit.scaleDown,child: Text('Home',style: MyTextStyle.appBarStyle,)),),
+    Tab(icon: FittedBox(fit:BoxFit.scaleDown,child: Text('About Me',style: MyTextStyle.appBarStyle,)),),
+    Tab(icon: FittedBox(fit:BoxFit.scaleDown,child: Text('Journey',style: MyTextStyle.appBarStyle,)),),
+    Tab(icon: FittedBox(fit:BoxFit.scaleDown,child: Text('Project',style: MyTextStyle.appBarStyle,)),),
+    Tab(icon: FittedBox(fit:BoxFit.scaleDown,child: Text('Contact Me',style: MyTextStyle.appBarStyle,)),),
+  ];
+  @override
+  Widget build(BuildContext context) {
+    //double width =MediaQuery.of(context).size.width;
+    return TabBar(
+      controller: TabController(length: 5, vsync: this,initialIndex: getIndex(widget.pixel)),
+      tabs: _tabs,
+      onTap: (index){
+        widget.scrollController.animateTo(getOffset(index), duration: const Duration(milliseconds: 500), curve: Curves.fastOutSlowIn);
+      },
+      labelColor: MyColors.primaryColor,
+      indicatorColor: MyColors.primaryColor,
+      dividerColor: Colors.transparent,
+      unselectedLabelColor: MyColors.secondaryColor,
+      indicatorSize: TabBarIndicatorSize.label,
+    );
+  }
+}
 int getIndex(double pixel){
   if(pixel < 400){
     return 0;

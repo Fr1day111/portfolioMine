@@ -8,7 +8,7 @@ class MyTextStyle{
   static const headingStyle = TextStyle(fontFamily: 'Mina',
       fontSize: 90,color: MyColors.primaryColor);
   static const headingStyleMobile = TextStyle(fontFamily: 'Mina',
-      fontSize: 60,color: MyColors.primaryColor);
+      fontSize: 50,color: MyColors.primaryColor);
   static const subHeadingStyle = TextStyle(fontFamily: 'Mina',
       fontSize: 40,color: MyColors.primaryColor);
   static const subHeadingStyleMobile = TextStyle(fontFamily: 'Mina',

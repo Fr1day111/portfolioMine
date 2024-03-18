@@ -4,6 +4,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_polygon/flutter_polygon.dart';
 import 'package:portfolio/utils/app_colors.dart';
 import 'package:portfolio/utils/app_text_styles.dart';
+import 'package:portfolio/widgets/social_options.dart';
 
 class MobileLandingView extends StatelessWidget {
   const MobileLandingView({required this.pixel, super.key});
@@ -13,7 +14,7 @@ class MobileLandingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 1000,
+      height: 900,
       width: MediaQuery.of(context).size.width,
       child: Center(
           child: Column(
@@ -22,7 +23,7 @@ class MobileLandingView extends StatelessWidget {
             children: [
               const SizedBox(height: 50,),
               SizedBox(
-                width: MediaQuery.of(context).size.width * 0.9,
+                width: MediaQuery.of(context).size.width * 0.6,
                 child: ClipPolygon(
                   sides: 5,
                   borderRadius: 5.0,
@@ -35,7 +36,7 @@ class MobileLandingView extends StatelessWidget {
                   child: Center(
                     child: Padding(
                       padding: EdgeInsets.only(
-                          top: MediaQuery.of(context).size.width * 0.15),
+                          top: MediaQuery.of(context).size.width * 0.08),
                       child: Image.asset(
                         'assets/profilee.png',
                       ),
@@ -74,13 +75,13 @@ class MobileLandingView extends StatelessWidget {
                       ],
                     ).animate(
                       delay: 500.ms,
-                    ).fadeIn(delay: 500.ms).moveY(),
+                    ).fadeIn(delay: 500.ms).moveX(),
                   ),
                 ),
               ),
-              // SizedBox(
-              //     height: MediaQuery.of(context).size.width*0.1
-              // ),
+              SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  child: const MySocials())
             ],
           )),
     );

@@ -6,6 +6,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_polygon/flutter_polygon.dart';
 import 'package:portfolio/utils/app_colors.dart';
 import 'package:portfolio/utils/app_text_styles.dart';
+import 'package:portfolio/widgets/social_options.dart';
 
 class LandingView extends StatelessWidget {
   const LandingView({required this.pixel, super.key});
@@ -51,7 +52,8 @@ class LandingView extends StatelessWidget {
                   const Text(
                     'Computer Engineer | Flutter Developer',
                     style: MyTextStyle.subHeadingStyle,
-                  )
+                  ),
+                  const MySocials()
                 ],
               )
                   .animate(

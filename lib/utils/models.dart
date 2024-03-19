@@ -31,14 +31,16 @@ List<Academic> myAcademy = [
 ];
 
 class Project{
-  Project({required this.name,required this.detail});
+  Project({required this.name,required this.detail,required this.photoPath,required this.link});
 
   final String name;
   final String detail;
+  final String photoPath;
+  final String link;
 }
 
 List<Project> projects =[
-  Project(name: 'Hikeyy', detail: 'MobileApp using Flutter \nImplemented simple authentication and functions to organise hiking plans with friends and track them\nFirebase, Google Map Api, Local Notification, and other libraries'),
-  Project(name: 'FreeL', detail: 'MobileApp using Flutter \nSimpleAuthentication and added ability to add the job with description and request for posted jobs'),
-  Project(name: 'FreeL', detail: 'MobileApp using Flutter \nSimpleAuthentication and added ability to add the job with description and request for posted jobs'),
+  Project(name: 'Our FreeLancer Community', photoPath:'assets/logo/our_freelancer_community.webp',detail: 'Website using Flutter \nPortfolio Website for the OurFreelancerCommunity \nResponsive Design and Proper State Management using Riverpod',link: 'https://ourfreelancercommunity.com/'),
+  Project(name: 'Hikeyy', photoPath:'assets/logo/Hikeyy.png',detail: 'MobileApp using Flutter \nImplemented simple authentication and functions to organise hiking plans with friends and track them\nFirebase, Google Map Api, Local Notification, and other libraries',link:'https://github.com/Fr1day111/FinalYearProject.git'),
+  Project(name: 'FreeL', photoPath:'assets/logo/FreeL.png',detail: 'MobileApp using Flutter \nSimpleAuthentication and added ability to add the job with description and request for posted jobs',link: 'https://github.com/Fr1day111/FreeLwithKhalti.git'),
 ];

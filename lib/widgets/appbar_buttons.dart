@@ -24,12 +24,12 @@ class _MyTabBarState extends State<MyTabBar>with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     double width =MediaQuery.of(context).size.width;
     return SizedBox(
-      width: width>=1100?width*0.4:width*0.5,
+      width: width>=1200?width*0.4:width*0.5,
       child: TabBar(
-        controller: TabController(length: 5, vsync: this,initialIndex: getIndex(widget.pixel)),
+        controller: TabController(length: 5, vsync: this,initialIndex: width>=1900?getIndex(widget.pixel):getIndexTab(widget.pixel)),
         tabs: _tabs,
         onTap: (index){
-          widget.scrollController.animateTo(getOffset(index), duration: const Duration(milliseconds: 500), curve: Curves.fastOutSlowIn);
+          widget.scrollController.animateTo(getOffset(index,width), duration: const Duration(milliseconds: 500), curve: Curves.fastOutSlowIn);
         },
         labelColor: MyColors.primaryColor,
         indicatorColor: MyColors.primaryColor,
@@ -61,12 +61,11 @@ class _MyTabBarMobileState extends State<MyTabBarMobile>with TickerProviderState
   ];
   @override
   Widget build(BuildContext context) {
-    //double width =MediaQuery.of(context).size.width;
     return TabBar(
       controller: TabController(length: 5, vsync: this,initialIndex: getIndex(widget.pixel)),
       tabs: _tabs,
       onTap: (index){
-        widget.scrollController.animateTo(getOffset(index), duration: const Duration(milliseconds: 500), curve: Curves.fastOutSlowIn);
+        widget.scrollController.animateTo(getOffsetMobile(index), duration: const Duration(milliseconds: 500), curve: Curves.fastOutSlowIn);
       },
       labelColor: MyColors.primaryColor,
       indicatorColor: MyColors.primaryColor,
@@ -83,14 +82,65 @@ int getIndex(double pixel){
     return 1;
   }else if(pixel>1200&&pixel<=1900){
     return 2;
-  }else if(pixel>1900){
+  }else if(pixel>1900&&pixel<=2800){
     return 3;
+  }
+  else if(pixel>2800){
+    return 4;
   }
   else{
     return 0;
   }
 }
-double getOffset(int index){
+int getIndexTab(double pixel){
+  if(pixel < 700){
+    return 0;
+  }else if(pixel>700&&pixel<=1700){
+    return 1;
+  }else if(pixel>1700&&pixel<=2800){
+    return 2;
+  }else if(pixel>2800&&pixel<=3400){
+    return 3;
+  }
+  else if(pixel>3400){
+    return 4;
+  }
+  else{
+    return 0;
+  }
+}
+int getIndexMobile(double pixel){
+  if(pixel < 700){
+    return 0;
+  }else if(pixel>700&&pixel<=1700){
+    return 1;
+  }else if(pixel>1700&&pixel<=3100){
+    return 2;
+  }else if(pixel>3100&&pixel<=4000){
+    return 3;
+  }
+  else if(pixel>4000){
+    return 4;
+  }
+  else{
+    return 0;
+  }
+}
+double getOffsetMobile(int index){
+  switch(index){
+    case 0:
+      return 0;
+    case 1:
+      return 1000;
+    case 2:
+      return 1900;
+    case 3:
+      return 3100;
+    default:
+      return 3100;
+  }
+}
+double getOffset(int index,double width){
  switch(index){
    case 0:
      return 0;
@@ -99,8 +149,8 @@ double getOffset(int index){
    case 2:
      return 1900;
    case 3:
-     return 2400;
+     return width>=1900?2800:3000;
    default:
-     return 2400;
+     return width>=1900?3100:4000;
  }
 }

@@ -58,10 +58,10 @@ class _MobileHomePageState extends State<MobileHomePage> with TickerProviderStat
                 fit: BoxFit.scaleDown,
                 child: Text('Sudip Shrestha',style: MyTextStyle.headingStyle,))),
         bottom: TabBar(
-          controller: TabController(length: 5, vsync: this,initialIndex: getIndex(pixel)),
+          controller: TabController(length: 5, vsync: this,initialIndex: getIndexMobile(pixel)),
           tabs: _tabs,
           onTap: (index){
-            scrollController.animateTo(getOffset(index), duration: const Duration(milliseconds: 500), curve: Curves.fastOutSlowIn);
+            scrollController.animateTo(getOffsetMobile(index), duration: const Duration(milliseconds: 500), curve: Curves.fastOutSlowIn);
           },
           labelColor: MyColors.primaryColor,
           indicatorColor: MyColors.primaryColor,

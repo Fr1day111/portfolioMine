@@ -26,5 +26,11 @@ class MyTextStyle{
   static const projectTitleStyle = TextStyle(fontFamily: 'Mina',
       fontSize: 30,color: Colors.white,fontWeight: FontWeight.bold);
   static const projectDetailStyle = TextStyle(fontFamily: 'Mina',
-      fontSize: 15,color: Colors.white);
+      color: Colors.white);
+  static const projectDetailStyleButton = TextStyle(fontFamily: 'Mina',
+      color: MyColors.primaryColor);
+  static const contactMeStyle = TextStyle(fontFamily: 'Mina', fontSize: 30,
+      color: MyColors.primaryColor);
+  static const contactMeSmallStyle = TextStyle(fontFamily: 'Mina', fontSize: 25,
+      color: Colors.white);
 }

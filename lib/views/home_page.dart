@@ -6,6 +6,7 @@ import 'package:portfolio/utils/app_colors.dart';
 import 'package:portfolio/utils/app_text_styles.dart';
 import 'package:portfolio/view_mobile/mobile_home_page.dart';
 import 'package:portfolio/views/about_me.dart';
+import 'package:portfolio/views/contact_me_view.dart';
 import 'package:portfolio/views/journeyTimeLine.dart';
 import 'package:portfolio/views/landing_view.dart';
 import 'package:portfolio/views/project_view.dart';
@@ -37,6 +38,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
     return ViewWrapper(
         mobileView: (constrains) => const MobileHomePage(),
         webView: (constrains) => Scaffold(
@@ -45,16 +47,16 @@ class _HomePageState extends State<HomePage> {
             forceMaterialTransparency: true,
             toolbarHeight: 100,
             title: Padding(
-              padding:EdgeInsets.only(left: MediaQuery.of(context).size.width*0.08,top: 20),
+              padding:EdgeInsets.only(left: width>=1200?width*0.08:width*0.01,top: 20),
               child: SizedBox(
-                width: MediaQuery.of(context).size.width*0.2,
+                width: width*0.2,
                   child: const FittedBox(
                     fit: BoxFit.scaleDown,
                       child: Text('Sudip Shrestha',style: MyTextStyle.headingStyle,))),
             ),
             actions: [
               Padding(
-                padding: EdgeInsets.only(right: MediaQuery.of(context).size.width*0.08),
+                padding: EdgeInsets.only(right: width>=1200?width*0.08:width*0.01),
                 child:  FittedBox(
                   fit: BoxFit.scaleDown,
                   child: MyTabBar(pixel: pixel,scrollController: scrollController,)
@@ -80,7 +82,8 @@ class _HomePageState extends State<HomePage> {
                 JourneyTimeLine(pixel: pixel,),
                 ProjectView(
                   pixels: pixel,
-                )
+                ),
+                ContactMeView(),
               ],
             ),
           ),

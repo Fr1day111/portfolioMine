@@ -110,13 +110,13 @@ int getIndexTab(double pixel){
   }
 }
 int getIndexMobile(double pixel){
-  if(pixel < 700){
+  if(pixel < 800){
     return 0;
-  }else if(pixel>700&&pixel<=1700){
+  }else if(pixel>800&&pixel<=1700){
     return 1;
-  }else if(pixel>1700&&pixel<=3100){
+  }else if(pixel>1700&&pixel<=2900){
     return 2;
-  }else if(pixel>3100&&pixel<=4000){
+  }else if(pixel>2900&&pixel<=4000){
     return 3;
   }
   else if(pixel>4000){
@@ -136,8 +136,10 @@ double getOffsetMobile(int index){
       return 1900;
     case 3:
       return 3100;
+    case 4:
+      return 4400;
     default:
-      return 3100;
+      return 0;
   }
 }
 double getOffset(int index,double width){

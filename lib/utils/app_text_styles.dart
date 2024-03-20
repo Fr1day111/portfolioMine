@@ -33,4 +33,6 @@ class MyTextStyle{
       color: MyColors.primaryColor);
   static const contactMeSmallStyle = TextStyle(fontFamily: 'Mina', fontSize: 25,
       color: Colors.white);
+  static const buttonStyle = TextStyle(fontFamily: 'Mina', fontSize: 25,
+      color: Colors.black);
 }

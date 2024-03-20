@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/utils/app_colors.dart';
 import 'package:portfolio/utils/app_text_styles.dart';
 import 'package:portfolio/view_mobile/mobile_aboutMe.dart';
+import 'package:portfolio/view_mobile/mobile_contact_me.dart';
 import 'package:portfolio/view_mobile/mobile_journey_view.dart';
 import 'package:portfolio/view_mobile/mobile_landing_view.dart';
 import 'package:portfolio/views/about_me.dart';
@@ -91,7 +92,8 @@ class _MobileHomePageState extends State<MobileHomePage> with TickerProviderStat
               ProjectView(
                 pixels: pixel,
                 isMobile: true,
-              )
+              ),
+              ContactMeMobileView()
             ],
           ),
         ),

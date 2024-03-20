@@ -90,7 +90,7 @@ class _ContactMeViewState extends State<ContactMeView> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              ContactMeWidget(icon: Icons.phone,title: 'Call Me',detail: '9867254064',),
+                              ContactMeWidget(icon: Icons.phone,title: 'Call Me',detail: '(+977) 9867254064',),
                               ContactMeWidget(icon: Icons.mail,title: 'E-Mail',detail: 'nwrsudeep@gmail.com',),
                               ContactMeWidget(icon: Icons.location_pin,title: 'Address',detail: 'Santinagar, Kathmandu',),
                             ],

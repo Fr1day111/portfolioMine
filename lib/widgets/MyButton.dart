@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/utils/app_colors.dart';
+import 'package:portfolio/utils/app_text_styles.dart';
 
 class MyButton extends StatelessWidget {
   const MyButton({required this.label, required this.onTap, super.key});
@@ -22,6 +23,7 @@ class MyButton extends StatelessWidget {
         child: Center(
           child: Text(
             label,
+            style: MyTextStyle.buttonStyle,
           ),
         ),
       ),

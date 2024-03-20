@@ -1,0 +1,3 @@
+class MyTexts{
+  static String aboutMeText="Hi there! I'm Sudip Shrestha, a graduate of computer engineering who is passionate about developing Flutter applications. Creating intuitive mobile experiences out of concepts is what I do best. Having a solid background in computer engineering, I approach every job with both technical know-how and an innovative spirit. \nTogether, let's make something amazing!";
+}

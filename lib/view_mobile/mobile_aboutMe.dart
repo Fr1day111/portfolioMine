@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:portfolio/utils/app_text_styles.dart';
+import 'package:portfolio/utils/app_texts.dart';
 
 class MobileAboutMe extends StatelessWidget {
   const MobileAboutMe({required this.pixels, super.key});
@@ -40,8 +41,8 @@ class MobileAboutMe extends StatelessWidget {
                 ),
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.8,
-                  child: const Text(
-                    'Sed tempus risus metus, eu gravida elit varius sit amet. Morbi eu nisl a quam luctus condimentum. Suspendisse quam leo, ultricies sed tincidunt vitae, porttitor quis erat. Nunc et nunc eget tellus fringilla congue pulvinar condimentum quam. Nunc volutpat quis sapien eget ullamcorper. Nulla ullamcorper maximus odio, sit amet auctor velit tincidunt vel. Integer sit amet feugiat tellus. Etiam pellentesque sed metus consequat posuere. Etiam in purus nulla.',
+                  child: Text(
+                    MyTexts.aboutMeText,
                     style: MyTextStyle.aboutUsStyleMobile,
                     maxLines: 5,
                   ),

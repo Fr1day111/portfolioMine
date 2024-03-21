@@ -1,10 +1,8 @@
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/utils/app_colors.dart';
 
 class MyTextStyle{
-
   static const headingStyle = TextStyle(fontFamily: 'Mina',
       fontSize: 90,color: MyColors.primaryColor);
   static const headingStyleMobile = TextStyle(fontFamily: 'Mina',

@@ -16,12 +16,6 @@ class _MySideBarState extends State<MySideBar> {
   int selectedIndex = 0;
 
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: MediaQuery.of(context).size.width*0.1,

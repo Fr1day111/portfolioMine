@@ -28,6 +28,7 @@ List<Academic> myAcademy = [
   Academic(name: 'Armadi Secondary School', degree: 'SLC'),
   Academic(name: 'Canvas International College', degree: '+2 Science(Physical)'),
   Academic(name: 'Nepal College of Information Technology', degree: 'Bachelor in Computer Engineering'),
+  Academic(name: 'Our Freelancer Community', degree: 'Flutter Developer(Dec 2023 - Present)'),
 ];
 
 class Project{
@@ -40,6 +41,7 @@ class Project{
 }
 List<Project> projects =[
   Project(name: 'Our FreeLancer Community', photoPath:'assets/logo/our_freelancer_community.webp',detail: 'Website using Flutter \nPortfolio Website for the OurFreelancerCommunity \nResponsive Design and Proper State Management using Riverpod',link: 'https://ourfreelancercommunity.com/'),
-  Project(name: 'Hikeyy', photoPath:'assets/logo/Hikeyy.png',detail: 'MobileApp using Flutter \nImplemented simple authentication and functions to organise hiking plans with friends and track them\nFirebase, Google Map Api, Local Notification, and other libraries',link:'https://github.com/Fr1day111/FinalYearProject.git'),
+  Project(name: 'Scheduler', photoPath:'assets/logo/scheduler_app_logo.png',detail: 'MobileApp using Flutter \nProper MVC Structure \nRiverpod, Local Notification and Sqflite',link: 'https://github.com/Fr1day111/ScheduleApp.git'),
+  Project(name: 'Hikeyy', photoPath:'assets/logo/Hikey.png',detail: 'MobileApp using Flutter \nImplemented simple authentication and functions to organise hiking plans with friends and track them\nFirebase, Google Map Api, Local Notification, and other libraries',link:'https://github.com/Fr1day111/FinalYearProject.git'),
   Project(name: 'FreeL', photoPath:'assets/logo/FreeL.png',detail: 'MobileApp using Flutter \nSimpleAuthentication and added ability to add the job with description and request for posted jobs',link: 'https://github.com/Fr1day111/FreeLwithKhalti.git'),
 ];

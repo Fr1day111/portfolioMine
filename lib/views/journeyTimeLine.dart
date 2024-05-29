@@ -20,7 +20,7 @@ class JourneyTimeLine extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
-              'My Academic Journey:',
+              'My Journey:',
               style: MyTextStyle.subHeadingStyle,
             ),
             const SizedBox(height: 50,),

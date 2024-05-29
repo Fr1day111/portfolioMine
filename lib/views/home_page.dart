@@ -11,6 +11,7 @@ import 'package:portfolio/views/project_view.dart';
 import 'package:portfolio/views/skill_views.dart';
 import 'package:portfolio/widgets/appbar_buttons.dart';
 import 'package:portfolio/widgets/view_breaker.dart';
+import 'package:web_smooth_scroll/web_smooth_scroll.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -63,26 +64,30 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
           backgroundColor: MyColors.backgroundColor,
-          body: SingleChildScrollView(
+          body: WebSmoothScroll(
             controller: scrollController,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                LandingView(
-                  pixel: pixel,
-                ),
-                AboutMe(
-                  pixels: pixel,
-                ),
-                MySkillsView(
-                  pixel: pixel,
-                ),
-                JourneyTimeLine(pixel: pixel,),
-                ProjectView(
-                  pixels: pixel,
-                ),
-                ContactMeView(),
-              ],
+            child: SingleChildScrollView(
+              controller: scrollController,
+              physics: const NeverScrollableScrollPhysics(),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  LandingView(
+                    pixel: pixel,
+                  ),
+                  AboutMe(
+                    pixels: pixel,
+                  ),
+                  MySkillsView(
+                    pixel: pixel,
+                  ),
+                  JourneyTimeLine(pixel: pixel,),
+                  ProjectView(
+                    pixels: pixel,
+                  ),
+                  const ContactMeView(),
+                ],
+              ),
             ),
           ),
         )

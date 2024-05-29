@@ -1,26 +1,29 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:portfolio/utils/app_colors.dart';
 import 'package:portfolio/utils/app_text_styles.dart';
+import 'package:portfolio/view_mobile/mobile_contact_me.dart';
 import 'package:portfolio/widgets/MyButton.dart';
 import 'package:portfolio/widgets/contact_me_widget.dart';
 import 'package:portfolio/widgets/textField.dart';
 
 
-class ContactMeView extends StatefulWidget {
+class ContactMeView extends ConsumerStatefulWidget {
   const ContactMeView({super.key});
 
   @override
-  State<ContactMeView> createState() => _ContactMeViewState();
+  ConsumerState<ContactMeView> createState() => _ContactMeViewState();
 }
 
-class _ContactMeViewState extends State<ContactMeView> {
+class _ContactMeViewState extends ConsumerState<ContactMeView> {
   final formKey = GlobalKey<FormState>();
   final nameController = TextEditingController();
   final emailController = TextEditingController();
   final messageController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    bool isLoading = ref.watch(loadingProvider);
     return Padding(
       padding: const EdgeInsets.only(top: 100.0,bottom: 100),
       child: SizedBox(
@@ -74,7 +77,37 @@ class _ContactMeViewState extends State<ContactMeView> {
                               const SizedBox(
                                 height: 10,
                               ),
-                              MyButton(label: 'Submit', onTap: (){})
+                              isLoading
+                                  ? Center(
+                                child: CircularProgressIndicator(),
+                              )
+                                  : MyButton(
+                                  label: 'Submit',
+                                  onTap: () {
+                                    ref.read(loadingProvider.notifier).update((state) => true);
+                                    sendEmail(
+                                        nameController.text,
+                                        emailController.text,
+                                        messageController.text)
+                                        .then((value) {
+                                      ref.read(loadingProvider.notifier).update((state) => false);
+                                      if (value == 'success') {
+                                        formKey.currentState?.reset();
+                                        nameController.clear();
+                                        emailController.clear();
+                                        messageController.clear();
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(const SnackBar(
+                                            content: Text(
+                                                'Message Sent!!!!!!')));
+                                      } else {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(const SnackBar(
+                                            content: Text(
+                                                'Something went wrong. Please try other way!!!!!!!!')));
+                                      }
+                                    });
+                                  })
 
                             ],
                           ),

@@ -1,29 +1,36 @@
-
+import 'package:emailjs/emailjs.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:portfolio/utils/app_text_styles.dart';
 import 'package:portfolio/widgets/MyButton.dart';
 import 'package:portfolio/widgets/contact_me_widget.dart';
 import 'package:portfolio/widgets/textField.dart';
 
+import '../utils/env.dart';
 
-class ContactMeMobileView extends StatefulWidget {
+final loadingProvider = StateProvider<bool>((ref) => false);
+
+class ContactMeMobileView extends ConsumerStatefulWidget {
   const ContactMeMobileView({super.key});
 
   @override
-  State<ContactMeMobileView> createState() => _ContactMeMobileViewState();
+  ConsumerState<ContactMeMobileView> createState() =>
+      _ContactMeMobileViewState();
 }
 
-class _ContactMeMobileViewState extends State<ContactMeMobileView> {
+class _ContactMeMobileViewState extends ConsumerState<ContactMeMobileView> {
   final formKey = GlobalKey<FormState>();
   final nameController = TextEditingController();
   final emailController = TextEditingController();
   final messageController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
+    bool isLoading = ref.watch(loadingProvider);
     return Padding(
-      padding: const EdgeInsets.only(top: 100.0,bottom: 100),
+      padding: const EdgeInsets.only(top: 100.0, bottom: 100),
       child: SizedBox(
-        width: MediaQuery.of(context).size.width*0.9,
+        width: MediaQuery.of(context).size.width * 0.9,
         child: Form(
             key: formKey,
             child: SingleChildScrollView(
@@ -38,22 +45,36 @@ class _ContactMeMobileViewState extends State<ContactMeMobileView> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(
-                        width: MediaQuery.of(context).size.width*0.6,
+                        width: MediaQuery.of(context).size.width * 0.6,
                         child: const FittedBox(
                           fit: BoxFit.scaleDown,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              ContactMeWidget(icon: Icons.phone,title: 'Call Me',detail: '(+977) 9867254064',),
-                              ContactMeWidget(icon: Icons.mail,title: 'E-Mail',detail: 'nwrsudeep@gmail.com',),
-                              ContactMeWidget(icon: Icons.location_pin,title: 'Address',detail: 'Santinagar, Kathmandu',),
+                              ContactMeWidget(
+                                icon: Icons.phone,
+                                title: 'Call Me',
+                                detail: '(+977) 9867254064',
+                              ),
+                              ContactMeWidget(
+                                icon: Icons.mail,
+                                title: 'E-Mail',
+                                detail: 'nwrsudeep@gmail.com',
+                              ),
+                              ContactMeWidget(
+                                icon: Icons.location_pin,
+                                title: 'Address',
+                                detail: 'Santinagar, Kathmandu',
+                              ),
                             ],
                           ),
                         ),
                       ),
-                      SizedBox(height: 20,),
                       SizedBox(
-                        width: MediaQuery.of(context).size.width*0.9,
+                        height: 20,
+                      ),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.9,
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Column(
@@ -63,13 +84,16 @@ class _ContactMeMobileViewState extends State<ContactMeMobileView> {
                                 children: [
                                   Expanded(
                                       child: MyTextField(
-                                          label: 'Name', controller: nameController)),
+                                          label: 'Name',
+                                          controller: nameController)),
                                   const SizedBox(
                                     width: 10,
                                   ),
                                   Expanded(
                                       child: MyTextField(
-                                          label: 'Email', controller: emailController,isEmail: true)),
+                                          label: 'Email',
+                                          controller: emailController,
+                                          isEmail: true)),
                                 ],
                               ),
                               const SizedBox(
@@ -84,8 +108,37 @@ class _ContactMeMobileViewState extends State<ContactMeMobileView> {
                               const SizedBox(
                                 height: 10,
                               ),
-                              MyButton(label: 'Submit', onTap: (){})
-
+                              isLoading
+                                  ? Center(
+                                      child: CircularProgressIndicator(),
+                                    )
+                                  : MyButton(
+                                      label: 'Submit',
+                                      onTap: () {
+                                        ref.read(loadingProvider.notifier).update((state) => true);
+                                        sendEmail(
+                                                nameController.text,
+                                                emailController.text,
+                                                messageController.text)
+                                            .then((value) {
+                                          ref.read(loadingProvider.notifier).update((state) => false);
+                                          if (value == 'success') {
+                                            formKey.currentState?.reset();
+                                            nameController.clear();
+                                            emailController.clear();
+                                            messageController.clear();
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(const SnackBar(
+                                                    content: Text(
+                                                        'Message Sent!!!!!!')));
+                                          } else {
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(const SnackBar(
+                                                    content: Text(
+                                                        'Something went wrong. Please try other way!!!!!!!!')));
+                                          }
+                                        });
+                                      })
                             ],
                           ),
                         ),
@@ -98,4 +151,32 @@ class _ContactMeMobileViewState extends State<ContactMeMobileView> {
       ),
     );
   }
+}
+
+Future<String?> sendEmail(String name, String email, String subject) async {
+  // Replace these values with your own EmailJS credentials
+  const serviceId = 'service_06l8dos';
+  const templateId = 'template_hws9akw';
+
+  final emailData = {
+    'name': name,
+    'user_email': email,
+    'message': subject,
+  };
+
+  try {
+    await EmailJS.send(
+      serviceId,
+      templateId,
+      emailData,
+      Options(
+        publicKey: '8D9lPRfbdeYGztgPg',
+        privateKey: Env.myApiKey,
+      ),
+    );
+    return 'success';
+  } catch (e) {
+    print('Error sending email: $e');
+  }
+  return null;
 }

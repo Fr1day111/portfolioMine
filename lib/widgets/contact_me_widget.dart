@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
-import 'package:portfolio/utils/app_colors.dart';
-import 'package:portfolio/utils/app_text_styles.dart';
+import '../utils/app_colors.dart';
+import '../utils/app_text_styles.dart';
 
 class ContactMeWidget extends StatelessWidget {
   const ContactMeWidget({required this.icon,required this.title,required this.detail,super.key});

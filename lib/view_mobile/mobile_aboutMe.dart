@@ -2,8 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:portfolio/utils/app_text_styles.dart';
-import 'package:portfolio/utils/app_texts.dart';
+
+
+import '../utils/app_text_styles.dart';
+import '../utils/app_texts.dart';
 
 class MobileAboutMe extends StatelessWidget {
   const MobileAboutMe({required this.pixels, super.key});

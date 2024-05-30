@@ -1,12 +1,12 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:portfolio/utils/app_colors.dart';
-import 'package:portfolio/utils/app_text_styles.dart';
-import 'package:portfolio/view_mobile/mobile_contact_me.dart';
-import 'package:portfolio/widgets/MyButton.dart';
-import 'package:portfolio/widgets/contact_me_widget.dart';
-import 'package:portfolio/widgets/textField.dart';
+
+import '../utils/app_text_styles.dart';
+import '../view_mobile/mobile_contact_me.dart';
+import '../widgets/MyButton.dart';
+import '../widgets/contact_me_widget.dart';
+import '../widgets/textField.dart';
 
 
 class ContactMeView extends ConsumerStatefulWidget {

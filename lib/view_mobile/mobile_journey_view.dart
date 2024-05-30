@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:portfolio/utils/app_colors.dart';
-import 'package:portfolio/utils/app_text_styles.dart';
-import 'package:portfolio/utils/models.dart';
+import '../utils/app_colors.dart';
+import '../utils/app_text_styles.dart';
+import '../utils/models.dart';
 import 'package:timelines/timelines.dart';
 
 class JourneyTimeLineMobile extends StatelessWidget {

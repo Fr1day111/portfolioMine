@@ -1,16 +1,17 @@
 
+import 'package:SudipShrestha/widgets/footer_text.dart';
 import 'package:flutter/material.dart';
-import 'package:portfolio/utils/app_colors.dart';
-import 'package:portfolio/utils/app_text_styles.dart';
-import 'package:portfolio/view_mobile/mobile_home_page.dart';
-import 'package:portfolio/views/about_me.dart';
-import 'package:portfolio/views/contact_me_view.dart';
-import 'package:portfolio/views/journeyTimeLine.dart';
-import 'package:portfolio/views/landing_view.dart';
-import 'package:portfolio/views/project_view.dart';
-import 'package:portfolio/views/skill_views.dart';
-import 'package:portfolio/widgets/appbar_buttons.dart';
-import 'package:portfolio/widgets/view_breaker.dart';
+import '../utils/app_colors.dart';
+import '../utils/app_text_styles.dart';
+import '../view_mobile/mobile_home_page.dart';
+import '../views/about_me.dart';
+import '../views/contact_me_view.dart';
+import '../views/journeyTimeLine.dart';
+import '../views/landing_view.dart';
+import '../views/project_view.dart';
+import '../views/skill_views.dart';
+import '../widgets/appbar_buttons.dart';
+import '../widgets/view_breaker.dart';
 import 'package:web_smooth_scroll/web_smooth_scroll.dart';
 
 class HomePage extends StatefulWidget {
@@ -86,6 +87,7 @@ class _HomePageState extends State<HomePage> {
                     pixels: pixel,
                   ),
                   const ContactMeView(),
+                  FooterText()
                 ],
               ),
             ),

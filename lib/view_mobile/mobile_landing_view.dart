@@ -2,9 +2,9 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_polygon/flutter_polygon.dart';
-import 'package:portfolio/utils/app_colors.dart';
-import 'package:portfolio/utils/app_text_styles.dart';
-import 'package:portfolio/widgets/social_options.dart';
+import '../utils/app_colors.dart';
+import '../utils/app_text_styles.dart';
+import '../widgets/social_options.dart';
 
 class MobileLandingView extends StatelessWidget {
   const MobileLandingView({required this.pixel, super.key});

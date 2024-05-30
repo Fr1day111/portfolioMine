@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/utils/app_colors.dart';
-import 'package:portfolio/utils/app_text_styles.dart';
+import '../utils/app_colors.dart';
+import '../utils/app_text_styles.dart';
 
 class MyTabBar extends StatefulWidget {
   const MyTabBar({required this.pixel,required this.scrollController,super.key});
@@ -135,7 +135,7 @@ double getOffsetMobile(int index){
     case 2:
       return 1900;
     case 3:
-      return 3100;
+      return 3350;
     case 4:
       return 5200;
     default:
@@ -151,8 +151,8 @@ double getOffset(int index,double width){
    case 2:
      return 1900;
    case 3:
-     return width>=1900?2800:3000;
+     return width>=1900?2950:3150;
    default:
-     return width>=1900?3700:4000;
+     return width>=1900?3900:4200;
  }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:portfolio/utils/app_colors.dart';
+import '../utils/app_colors.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 

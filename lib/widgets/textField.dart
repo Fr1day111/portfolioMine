@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:portfolio/utils/app_colors.dart';
-import 'package:portfolio/utils/app_text_styles.dart';
+import '../utils/app_colors.dart';
+import '../utils/app_text_styles.dart';
 
 class MyTextField extends StatelessWidget {
   const MyTextField({required this.label, required this.controller,this.maxLines,this.isNumber,this.isAutoValidate, this.isMultiline, this.isEmail, super.key});
@@ -17,7 +17,7 @@ class MyTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      autovalidateMode: isAutoValidate==false?AutovalidateMode.disabled:AutovalidateMode.onUserInteraction,
+     // autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: (value){
         if(isEmail==true){
           bool emailValid = RegExp(

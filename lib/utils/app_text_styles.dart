@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:portfolio/utils/app_colors.dart';
+import '../utils/app_colors.dart';
 
 class MyTextStyle{
   static const headingStyle = TextStyle(fontFamily: 'Mina',

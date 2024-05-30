@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:portfolio/utils/models.dart';
+import '../utils/models.dart';
 
 import '../utils/app_text_styles.dart';
 

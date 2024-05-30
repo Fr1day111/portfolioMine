@@ -46,7 +46,6 @@ class MobileAboutMe extends StatelessWidget {
                   child: Text(
                     MyTexts.aboutMeText,
                     style: MyTextStyle.aboutUsStyleMobile,
-                    maxLines: 5,
                   ),
                 )
               ],

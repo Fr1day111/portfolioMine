@@ -41,7 +41,7 @@ class Project{
 }
 List<Project> projects =[
   Project(name: 'Our FreeLancer Community', photoPath:'assets/logo/our_freelancer_community.webp',detail: 'Website using Flutter \nPortfolio Website for the OurFreelancerCommunity \nResponsive Design and Proper State Management using Riverpod',link: 'https://ourfreelancercommunity.com/'),
-  Project(name: 'Scheduler', photoPath:'assets/logo/scheduler_app_logo.png',detail: 'MobileApp using Flutter \nProper MVC Structure \nRiverpod, Local Notification and Sqflite',link: 'https://github.com/Fr1day111/ScheduleApp.git'),
-  Project(name: 'Hikeyy', photoPath:'assets/logo/Hikey.png',detail: 'MobileApp using Flutter \nImplemented simple authentication and functions to organise hiking plans with friends and track them\nFirebase, Google Map Api, Local Notification, and other libraries',link:'https://github.com/Fr1day111/FinalYearProject.git'),
-  Project(name: 'FreeL', photoPath:'assets/logo/FreeL.png',detail: 'MobileApp using Flutter \nSimpleAuthentication and added ability to add the job with description and request for posted jobs',link: 'https://github.com/Fr1day111/FreeLwithKhalti.git'),
+  Project(name: 'Scheduler', photoPath:'assets/logo/scheduler_app_logo.png',detail: 'MobileApp using Flutter \nAvailable in Play Store \nProper MVC Structure \nRiverpod, Local Notification and Sqflite',link: 'https://play.google.com/store/apps/details?id=com.fr1day.scheduleapp&pcampaignid=web_share'),
+  Project(name: 'Hikeyy', photoPath:'assets/logo/Hikey.png',detail: 'MobileApp using Flutter \nImplemented simple authentication and functions to organise \nhiking plans with friends and track them\nFirebase, Google Map Api, Local Notification, and other libraries',link:'https://github.com/Fr1day111/FinalYearProject.git'),
+  Project(name: 'FreeL', photoPath:'assets/logo/FreeL.png',detail: 'MobileApp using Flutter \nSimpleAuthentication and added ability to add the job \nwith description and request for posted jobs',link: 'https://github.com/Fr1day111/FreeLwithKhalti.git'),
 ];

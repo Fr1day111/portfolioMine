@@ -1,7 +1,7 @@
 
 import 'dart:math';
 
-import 'package:SudipShrestha/widgets/footer_text.dart';
+import '../widgets/footer_text.dart';
 import 'package:flutter/material.dart';
 import '../utils/app_colors.dart';
 import '../utils/app_text_styles.dart';
@@ -9,13 +9,9 @@ import '../view_mobile/mobile_aboutMe.dart';
 import '../view_mobile/mobile_contact_me.dart';
 import '../view_mobile/mobile_journey_view.dart';
 import '../view_mobile/mobile_landing_view.dart';
-import '../views/about_me.dart';
-import '../views/journeyTimeLine.dart';
-import '../views/landing_view.dart';
 import '../views/project_view.dart';
 import '../views/skill_views.dart';
 import '../widgets/appbar_buttons.dart';
-import '../widgets/sidebar.dart';
 
 class MobileHomePage extends StatefulWidget {
   const MobileHomePage({super.key});

@@ -30,7 +30,7 @@ class ProjectView extends StatelessWidget {
                   maxCrossAxisExtent: isMobile==true?width * 0.9:width>=1500?width * 0.4:width*0.5,
                   crossAxisSpacing: 10,
                   mainAxisSpacing: 10,
-                  childAspectRatio: isMobile==true?1.5:1.1),
+                  childAspectRatio: 1.1),
               itemCount: projects.length,
               itemBuilder: (context, index) {
                 return pixels>=2500?Card(

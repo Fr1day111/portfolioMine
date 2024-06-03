@@ -1,5 +1,5 @@
 
-import 'package:SudipShrestha/widgets/footer_text.dart';
+import '../widgets/footer_text.dart';
 import 'package:flutter/material.dart';
 import '../utils/app_colors.dart';
 import '../utils/app_text_styles.dart';

@@ -24,6 +24,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   late ScrollController scrollController;
   double pixel = 0;
+  List<GlobalKey> keys = List.generate(5, (index) => GlobalKey());
 
   @override
   void initState() {
@@ -59,7 +60,7 @@ class _HomePageState extends State<HomePage> {
                 padding: EdgeInsets.only(right: width>=1200?width*0.08:width*0.01),
                 child:  FittedBox(
                   fit: BoxFit.scaleDown,
-                  child: MyTabBar(pixel: pixel,scrollController: scrollController,)
+                  child: MyTabBar(pixel: pixel,scrollController: scrollController,keys: keys,)
                 ),
               )
             ],
@@ -75,18 +76,24 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   LandingView(
                     pixel: pixel,
+                    landingKey: keys[0],
                   ),
                   AboutMe(
                     pixels: pixel,
+                    aboutMeKey: keys[1],
                   ),
                   MySkillsView(
                     pixel: pixel,
+                    skillKey: keys[2],
                   ),
-                  JourneyTimeLine(pixel: pixel,),
+                  JourneyTimeLine(pixel: pixel),
                   ProjectView(
                     pixels: pixel,
+                    projectKey: keys[3],
                   ),
-                  const ContactMeView(),
+                  ContactMeView(
+                    contactKey: keys[4],
+                  ),
                   FooterText()
                 ],
               ),

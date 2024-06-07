@@ -10,7 +10,9 @@ import '../widgets/textField.dart';
 final loadingProvider = StateProvider<bool>((ref) => false);
 
 class ContactMeMobileView extends ConsumerStatefulWidget {
-  const ContactMeMobileView({super.key});
+  const ContactMeMobileView({required this.contactMeKey,super.key});
+
+  final GlobalKey contactMeKey;
 
   @override
   ConsumerState<ContactMeMobileView> createState() =>
@@ -29,6 +31,7 @@ class _ContactMeMobileViewState extends ConsumerState<ContactMeMobileView> {
     return Padding(
       padding: const EdgeInsets.only(top: 100.0, bottom: 100),
       child: SizedBox(
+        key: widget.contactMeKey,
         width: MediaQuery.of(context).size.width * 0.9,
         child: Form(
             key: formKey,

@@ -6,15 +6,17 @@ import '../utils/models.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class ProjectView extends StatelessWidget {
-  const ProjectView({required this.pixels,this.isMobile ,super.key});
+  const ProjectView({required this.projectKey,required this.pixels,this.isMobile ,super.key});
 
   final double pixels;
   final bool? isMobile;
+  final GlobalKey projectKey;
 
   @override
   Widget build(BuildContext context) {
     double width= MediaQuery.of(context).size.width;
     return SizedBox(
+      key: projectKey,
       width: MediaQuery.of(context).size.width *0.9 ,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

@@ -7,18 +7,20 @@ import '../utils/app_text_styles.dart';
 import '../widgets/social_options.dart';
 
 class MobileLandingView extends StatelessWidget {
-  const MobileLandingView({required this.pixel, super.key});
+  const MobileLandingView({required this.landingKey,required this.pixel, super.key});
 
   final double pixel;
+  final GlobalKey landingKey;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 900,
+      key: landingKey,
+      height: 750,
       width: MediaQuery.of(context).size.width,
       child: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(height: 50,),

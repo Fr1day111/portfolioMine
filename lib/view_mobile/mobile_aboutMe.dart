@@ -8,16 +8,18 @@ import '../utils/app_text_styles.dart';
 import '../utils/app_texts.dart';
 
 class MobileAboutMe extends StatelessWidget {
-  const MobileAboutMe({required this.pixels, super.key});
+  const MobileAboutMe({required this.aboutMeKey,required this.pixels, super.key});
 
   final double pixels;
+  final GlobalKey aboutMeKey;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: MediaQuery.of(context).size.width,
-      height: 900,
+     // height: 900,
       child: Padding(
+        key: aboutMeKey,
         padding: const EdgeInsets.symmetric(vertical: 8.0),
         child: pixels>=200?Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -51,7 +53,8 @@ class MobileAboutMe extends StatelessWidget {
               ],
             ).animate().fadeIn().moveX(duration: 500.ms,begin: 200),
           ],
-        ):Container(),
+        ):Container(
+        ),
       ),
     );
   }

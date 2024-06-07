@@ -22,7 +22,9 @@ class MobileHomePage extends StatefulWidget {
 
 class _MobileHomePageState extends State<MobileHomePage> with TickerProviderStateMixin {
   late ScrollController scrollController;
+  int currentIndex = -1;
   double pixel = 0;
+  List<GlobalKey> keys = List.generate(5, (index) => GlobalKey());
   final _tabs = const [
     Tab(icon: FittedBox(fit:BoxFit.scaleDown,child: Text('Home',style: MyTextStyle.appBarStyle,)),),
     Tab(icon: FittedBox(fit:BoxFit.scaleDown,child: Text('About Me',style: MyTextStyle.appBarStyle,)),),
@@ -59,7 +61,7 @@ class _MobileHomePageState extends State<MobileHomePage> with TickerProviderStat
           controller: TabController(length: 5, vsync: this,initialIndex: getIndexMobile(pixel)),
           tabs: _tabs,
           onTap: (index){
-            scrollController.animateTo(getOffsetMobile(index), duration: const Duration(milliseconds: 500), curve: Curves.fastOutSlowIn);
+            Scrollable.ensureVisible(keys[index].currentContext!,duration: const Duration(milliseconds: 500), curve: Curves.fastOutSlowIn);
           },
           labelColor: MyColors.primaryColor,
           indicatorColor: MyColors.primaryColor,
@@ -78,19 +80,23 @@ class _MobileHomePageState extends State<MobileHomePage> with TickerProviderStat
             children: [
               MobileLandingView(
                 pixel: pixel,
+                landingKey: keys[0],
               ),
               MobileAboutMe(
                 pixels: pixel,
+                aboutMeKey: keys[1],
               ),
               MySkillsView(
                 pixel: pixel,
+                skillKey: keys[2],
               ),
               JourneyTimeLineMobile(pixel: pixel,),
               ProjectView(
                 pixels: pixel,
                 isMobile: true,
+                projectKey: keys[3],
               ),
-              ContactMeMobileView(),
+              ContactMeMobileView(contactMeKey: keys[4],),
               FooterText()
             ],
           ),
@@ -100,9 +106,9 @@ class _MobileHomePageState extends State<MobileHomePage> with TickerProviderStat
   }
 }
 int getIndex(double pixel){
-  if(pixel < 400){
+  if(pixel < 100){
     return 0;
-  }else if(pixel>400&&pixel<=1200){
+  }else if(pixel>100&&pixel<=1200){
     return 1;
   }else if(pixel>1200&&pixel<=1900){
     return 2;

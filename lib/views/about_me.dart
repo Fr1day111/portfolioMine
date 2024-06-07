@@ -7,13 +7,15 @@ import '../utils/app_text_styles.dart';
 import '../utils/app_texts.dart';
 
 class AboutMe extends StatelessWidget {
-  const AboutMe({required this.pixels, super.key});
+  const AboutMe({required this.aboutMeKey,required this.pixels, super.key});
 
   final double pixels;
+  final GlobalKey aboutMeKey;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
+      key: aboutMeKey,
       width: MediaQuery.of(context).size.width,
       height: 900,
       child: Padding(

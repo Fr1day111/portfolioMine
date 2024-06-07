@@ -2,20 +2,23 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:portfolio/views/journeyTimeLine.dart';
 import '../utils/models.dart';
 
 import '../utils/app_text_styles.dart';
 
 class MySkillsView extends StatelessWidget {
-  const MySkillsView({required this.pixel,super.key});
+  const MySkillsView({required this.skillKey,required this.pixel,super.key});
 
   final double pixel;
+  final GlobalKey skillKey;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 100.0),
       child: SizedBox(
+        key: skillKey,
         width: MediaQuery.of(context).size.width*0.9 ,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -41,7 +44,8 @@ class MySkillsView extends StatelessWidget {
                       child: Image.asset(
                     skill.photoPath,
                     height: 100,
-                  )):Container();
+                  )):Container(
+                  );
                 }),
           ],
         ),

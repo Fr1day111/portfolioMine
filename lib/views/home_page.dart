@@ -67,6 +67,8 @@ class _HomePageState extends State<HomePage> {
           ),
           backgroundColor: MyColors.backgroundColor,
           body: WebSmoothScroll(
+            curve: Curves.linear,
+            animationDuration: 5,
             controller: scrollController,
             child: SingleChildScrollView(
               controller: scrollController,

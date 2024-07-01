@@ -40,28 +40,31 @@ class JourneyTimeLineMobile extends StatelessWidget {
               builder: TimelineTileBuilder.connectedFromStyle(
                 firstConnectorStyle: ConnectorStyle.transparent,
                 lastConnectorStyle: ConnectorStyle.transparent,
-                contentsBuilder: (context, index) => pixel>=1600?Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 20.0),
-                  child: Card(
-                    color: MyColors.secondaryColor,
-                    child: Center(
-                      child: SizedBox(
-                          height: 100,
-                          width: MediaQuery.of(context).size.width * 0.8,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              FittedBox(
-                                  fit: BoxFit.scaleDown,
-                                  child: Text(myAcademy[index].degree,style: MyTextStyle.academyStyle,)),
-                              FittedBox(
-                                  fit: BoxFit.scaleDown,
-                                  child: Text(myAcademy[index].name,style: MyTextStyle.academySmallStyle,)),
-                            ],
-                          )),
-                    ),
-                  ).animate(delay: Duration(milliseconds: 500*index),).fade().slideX(begin:2,duration: 500.ms),
-                ):Container(),
+                contentsBuilder: (context, index) => Visibility(
+                  visible: pixel>=1600,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 20.0),
+                    child: Card(
+                      color: MyColors.secondaryColor,
+                      child: Center(
+                        child: SizedBox(
+                            height: 100,
+                            width: MediaQuery.of(context).size.width * 0.8,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                FittedBox(
+                                    fit: BoxFit.scaleDown,
+                                    child: Text(myAcademy[index].degree,style: MyTextStyle.academyStyle,)),
+                                FittedBox(
+                                    fit: BoxFit.scaleDown,
+                                    child: Text(myAcademy[index].name,style: MyTextStyle.academySmallStyle,)),
+                              ],
+                            )),
+                      ),
+                    ).animate(delay: Duration(milliseconds: 500*index),).fade().slideX(begin:2,duration: 500.ms),
+                  ),
+                ),
                 connectorStyleBuilder: (context, index) => ConnectorStyle.solidLine,
                 indicatorStyleBuilder: (context, index) => IndicatorStyle.dot,
                 itemCount: myAcademy.length,

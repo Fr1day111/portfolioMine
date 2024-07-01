@@ -35,50 +35,53 @@ class ProjectView extends StatelessWidget {
                   childAspectRatio: 1.1),
               itemCount: projects.length,
               itemBuilder: (context, index) {
-                return pixels>=2500?Card(
-                  color: MyColors.secondaryColor,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Expanded(child: ClipRRect(
-                        borderRadius: const BorderRadius.only(topLeft: Radius.circular(10),topRight: Radius.circular(10)),
-                          child: Container(color:MyColors.primaryColor,child: Image.asset(projects[index].photoPath,fit: BoxFit.fill,)))),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            FittedBox(
-                              fit:BoxFit.scaleDown,
-                              child: Text(
-                                projects[index].name,
-                                style: MyTextStyle.projectTitleStyle,
+                return Visibility(
+                  visible: pixels>=2500,
+                  child: Card(
+                    color: MyColors.secondaryColor,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Expanded(child: ClipRRect(
+                          borderRadius: const BorderRadius.only(topLeft: Radius.circular(10),topRight: Radius.circular(10)),
+                            child: Container(color:MyColors.primaryColor,child: Image.asset(projects[index].photoPath,fit: BoxFit.fill,)))),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              FittedBox(
+                                fit:BoxFit.scaleDown,
+                                child: Text(
+                                  projects[index].name,
+                                  style: MyTextStyle.projectTitleStyle,
+                                ),
                               ),
-                            ),
-                            FittedBox(
-                              fit: BoxFit.scaleDown,
-                              child: Text(
-                                projects[index].detail,
-                                style: MyTextStyle.projectDetailStyle,
+                              FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: Text(
+                                  projects[index].detail,
+                                  style: MyTextStyle.projectDetailStyle,
+                                ),
                               ),
-                            ),
-                            InkWell(
-                              onTap: (){
-                                launchUrlString(projects[index].link);
-                              },
-                              child: const Text(
-                                'View Project ->',
-                                textAlign: TextAlign.start,
-                                style: MyTextStyle.projectDetailStyleButton,
+                              InkWell(
+                                onTap: (){
+                                  launchUrlString(projects[index].link);
+                                },
+                                child: const Text(
+                                  'View Project ->',
+                                  textAlign: TextAlign.start,
+                                  style: MyTextStyle.projectDetailStyleButton,
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                ).animate(delay: Duration(milliseconds: 500*index)).fadeIn().slide(duration: 500.ms):Container();
+                      ],
+                    ),
+                  ).animate(delay: Duration(milliseconds: 500*index)).fadeIn().slide(duration: 500.ms),
+                );
               }),
         ],
       ),

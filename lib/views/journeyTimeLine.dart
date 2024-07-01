@@ -40,28 +40,32 @@ class JourneyTimeLine extends StatelessWidget {
                 firstConnectorStyle: ConnectorStyle.transparent,
                 lastConnectorStyle: ConnectorStyle.transparent,
                 contentsAlign: ContentsAlign.alternating,
-                contentsBuilder: (context, index) => pixel>=1600?Card(
-                  color: MyColors.secondaryColor,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Center(
-                      child: SizedBox(
-                          height: 100,
-                          width: MediaQuery.of(context).size.width * 0.25,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              FittedBox(
-                                fit: BoxFit.scaleDown,
-                                  child: Text(myAcademy[index].degree,style: MyTextStyle.academyStyle,)),
-                              FittedBox(
-                                fit: BoxFit.scaleDown,
-                                  child: Text(myAcademy[index].name,style: MyTextStyle.academySmallStyle,)),
-                            ],
-                          )),
+                contentsBuilder: (context, index) => Visibility(
+                  visible: pixel>=1600,
+                  child: Card(
+                    color: MyColors.secondaryColor,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Center(
+                        child: SizedBox(
+                            height: 100,
+                            width: MediaQuery.of(context).size.width * 0.25,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                FittedBox(
+                                  fit: BoxFit.scaleDown,
+                                    child: Text(myAcademy[index].degree,style: MyTextStyle.academyStyle,)),
+                                FittedBox(
+                                  fit: BoxFit.scaleDown,
+                                    child: Text(myAcademy[index].name,style: MyTextStyle.academySmallStyle,)),
+                              ],
+                            )),
+                      ),
                     ),
-                  ),
-                ).animate(delay: Duration(milliseconds: 500*index),).fade().slideX(begin:(index%2==0)?2:-2,duration: 500.ms):Container(),
+                  ).animate(delay: Duration(milliseconds: 500*index),).fade().slideX(begin:(index%2==0)?2:-2,duration: 500.ms),
+                ),
+                  //    :Container(),
                 connectorStyleBuilder: (context, index) => ConnectorStyle.solidLine,
                 indicatorStyleBuilder: (context, index) => IndicatorStyle.dot,
                 itemCount: myAcademy.length,

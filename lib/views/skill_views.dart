@@ -38,13 +38,15 @@ class MySkillsView extends StatelessWidget {
                     maxCrossAxisExtent: 200),
                 itemBuilder: (context, index) {
                   Skills skill = mySkills[index];
-                  return pixel>=1200?Animate(
-                    delay: Duration(milliseconds: 100*index),
-                    effects: [const FadeEffect(),SlideEffect(duration: 500.ms)],
-                      child: Image.asset(
-                    skill.photoPath,
-                    height: 100,
-                  )):Container(
+                  return Visibility(
+                    visible: pixel>=1200,
+                    child: Animate(
+                      delay: Duration(milliseconds: 100*index),
+                      effects: [const FadeEffect(),SlideEffect(duration: 500.ms)],
+                        child: Image.asset(
+                      skill.photoPath,
+                      height: 100,
+                    )),
                   );
                 }),
           ],

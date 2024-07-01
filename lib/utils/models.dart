@@ -25,7 +25,7 @@ class Academic {
 }
 
 List<Academic> myAcademy = [
-  Academic(name: 'Our Freelancer Community', degree: 'Flutter Developer(Dec 2023 - Present)'),
+  Academic(name: 'Our Freelancer Community', degree: 'Flutter Developer(Jun 2023 - Present)'),
   Academic(name: 'Nepal College of Information Technology', degree: 'Bachelor in Computer Engineering'),
   Academic(name: 'Canvas International College', degree: '+2 Science(Physical)'),
   Academic(name: 'Armadi Secondary School', degree: 'SLC'),

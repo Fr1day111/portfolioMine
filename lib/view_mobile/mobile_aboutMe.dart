@@ -21,40 +21,42 @@ class MobileAboutMe extends StatelessWidget {
       child: Padding(
         key: aboutMeKey,
         padding: const EdgeInsets.symmetric(vertical: 8.0),
-        child: pixels>=200?Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              width: MediaQuery.of(context).size.width * 0.8,
-              height: MediaQuery.of(context).size.width * 0.8,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(),
-                  image: const DecorationImage(
-                      fit: BoxFit.cover,
-                      image: AssetImage('assets/aboutPhoto.jpg'))),
-            ).animate().fadeIn().moveX(duration: 500.ms,begin: -200),
-           const SizedBox(height: 24,),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  'About Me',
-                  style: MyTextStyle.subHeadingStyleMobile,
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.8,
-                  child: Text(
-                    MyTexts.aboutMeText,
-                    style: MyTextStyle.aboutUsStyleMobile,
+        child: Visibility(
+          visible: pixels>=200,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                width: MediaQuery.of(context).size.width * 0.8,
+                height: MediaQuery.of(context).size.width * 0.8,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(),
+                    image: const DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage('assets/aboutPhoto.jpg'))),
+              ).animate().fadeIn().moveX(duration: 500.ms,begin: -200),
+             const SizedBox(height: 24,),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'About Me',
+                    style: MyTextStyle.subHeadingStyleMobile,
                   ),
-                )
-              ],
-            ).animate().fadeIn().moveX(duration: 500.ms,begin: 200),
-          ],
-        ):Container(
-        ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.8,
+                    child: Text(
+                      MyTexts.aboutMeText,
+                      style: MyTextStyle.aboutUsStyleMobile,
+                    ),
+                  )
+                ],
+              ).animate().fadeIn().moveX(duration: 500.ms,begin: 200),
+            ],
+          ),
+        )
       ),
     );
   }

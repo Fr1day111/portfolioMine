@@ -102,10 +102,6 @@ class _MobileHomePageState extends State<MobileHomePage>
             scrollController.animateTo(getOffsetMobile(index),
                 duration: const Duration(milliseconds: 500),
                 curve: Curves.fastOutSlowIn);
-            // Scrollable.ensureVisible(keys[index].currentContext!,
-            //     duration: const Duration(milliseconds: 500),
-            //     curve: Curves.fastOutSlowIn,
-            //     alignmentPolicy: ScrollPositionAlignmentPolicy.explicit);
           },
           labelColor: MyColors.primaryColor,
           indicatorColor: MyColors.primaryColor,
@@ -182,7 +178,9 @@ double getOffset(int index) {
     case 2:
       return 1900;
     case 3:
-      return 2400;
+      return 3000;
+    case 4:
+      return 4500;
     default:
       return 2400;
   }
@@ -197,9 +195,9 @@ double getOffsetMobile(int index) {
     case 2:
       return 1450;
     case 3:
-      return 2900;
+      return 3000;
     case 4:
-      return 4000;
+      return 5500;
     default:
       return 0;
   }

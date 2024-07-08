@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../utils/app_colors.dart';
 import '../utils/app_text_styles.dart';
+import '../view_mobile/mobile_home_page.dart';
 
 class MyTabBar extends StatefulWidget {
   const MyTabBar({required this.pixel,required this.scrollController,required this.keys,super.key});
@@ -19,29 +20,6 @@ class _MyTabBarState extends State<MyTabBar>with TickerProviderStateMixin {
   void initState() {
     // TODO: implement initState
     super.initState();
-    widget.scrollController.addListener(_handleScroll);
-  }
-  void _handleScroll() {
-    final RenderBox renderBox = context.findRenderObject() as RenderBox;
-    final Offset position = renderBox.localToGlobal(Offset.zero);
-    final double scrollOffsetY = widget.scrollController.offset + position.dy;
-
-    setState(() {
-      currentIndex = 0;
-      for (int i = 0; i < widget.keys.length; i++) {
-        final key = widget.keys[i];
-        final renderBoxRed = key.currentContext?.findRenderObject() as RenderBox?;
-        if (renderBoxRed != null) {
-          final Offset widgetPosition = renderBoxRed.localToGlobal(Offset.zero);
-          final double widgetHeight = renderBoxRed.size.height;
-          if (scrollOffsetY >= widgetPosition.dy &&
-              scrollOffsetY < widgetPosition.dy + widgetHeight) {
-            currentIndex = i;
-            break;
-          }
-        }
-      }
-    });
   }
   final _tabs = const [
     Tab(icon: FittedBox(fit:BoxFit.scaleDown,child: Text('Home',style: MyTextStyle.appBarStyle,)),),
@@ -59,8 +37,9 @@ class _MyTabBarState extends State<MyTabBar>with TickerProviderStateMixin {
         controller: TabController(length: 5, vsync: this,initialIndex: width>=1900?getIndex(widget.pixel):getIndexTab(widget.pixel)),
         tabs: _tabs,
         onTap: (index){
-          Scrollable.ensureVisible(widget.keys[index].currentContext!,duration: const Duration(milliseconds: 500), curve: Curves.fastOutSlowIn);
-         // widget.scrollController.animateTo(getOffset(index,width), duration: const Duration(milliseconds: 500), curve: Curves.fastOutSlowIn);
+          // Scrollable.ensureVisible(widget.keys[index].currentContext!,duration: const Duration(milliseconds: 500), curve: Curves.fastOutSlowIn);
+          widget.scrollController.animateTo(getOffset(index), duration: const Duration(milliseconds: 500), curve: Curves.fastOutSlowIn);
+
         },
         labelColor: MyColors.primaryColor,
         indicatorColor: MyColors.primaryColor,
@@ -98,7 +77,6 @@ class _MyTabBarMobileState extends State<MyTabBarMobile>with TickerProviderState
       tabs: _tabs,
       onTap: (index){
         Scrollable.ensureVisible(widget.keys[index].currentContext!,duration: const Duration(milliseconds: 500), curve: Curves.fastOutSlowIn);
-      //  widget.scrollController.animateTo(getOffsetMobile(index), duration: const Duration(milliseconds: 500), curve: Curves.fastOutSlowIn);
       },
       labelColor: MyColors.primaryColor,
       indicatorColor: MyColors.primaryColor,

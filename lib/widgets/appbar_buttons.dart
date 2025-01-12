@@ -1,58 +1,92 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:portfolio/views/landing_view.dart';
+import 'package:portfolio/widgets/footer_text.dart';
+import 'package:portfolio/widgets/svg_icons.dart';
 import '../utils/app_colors.dart';
 import '../utils/app_text_styles.dart';
 import '../view_mobile/mobile_home_page.dart';
 
 class MyTabBar extends StatefulWidget {
-  const MyTabBar({required this.pixel,required this.scrollController,required this.keys,super.key});
+  const MyTabBar({required this.navigationShell, super.key});
 
-  final double pixel;
-  final ScrollController scrollController;
-  final List<GlobalKey> keys;
+  final StatefulNavigationShell navigationShell;
 
   @override
   State<MyTabBar> createState() => _MyTabBarState();
 }
 
-class _MyTabBarState extends State<MyTabBar>with TickerProviderStateMixin {
-  int currentIndex= 0;
+class _MyTabBarState extends State<MyTabBar> with TickerProviderStateMixin {
+  int currentIndex = 0;
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
   }
+
   final _tabs = const [
-    Tab(icon: FittedBox(fit:BoxFit.scaleDown,child: Text('Home',style: MyTextStyle.appBarStyle,)),),
-    Tab(icon: FittedBox(fit:BoxFit.scaleDown,child: Text('About Me',style: MyTextStyle.appBarStyle,)),),
-    Tab(icon: FittedBox(fit:BoxFit.scaleDown,child: Text('Journey',style: MyTextStyle.appBarStyle,)),),
-    Tab(icon: FittedBox(fit:BoxFit.scaleDown,child: Text('Project',style: MyTextStyle.appBarStyle,)),),
-    Tab(icon: FittedBox(fit:BoxFit.scaleDown,child: Text('Contact Me',style: MyTextStyle.appBarStyle,)),),
+    Tab(
+      icon:SvgIcon(assetName: 'home')
+    ),
+    Tab(
+      icon: SvgIcon(assetName: 'about')
+    ),
+    Tab(
+      icon: SvgIcon(assetName: 'projects')
+    ),
+    Tab(
+      icon: SvgIcon(assetName: 'contact_me')
+    ),
   ];
+
   @override
   Widget build(BuildContext context) {
-    double width =MediaQuery.of(context).size.width;
-    return SizedBox(
-      width: width>=1200?width*0.4:width*0.5,
-      child: TabBar(
-        controller: TabController(length: 5, vsync: this,initialIndex: width>=1900?getIndex(widget.pixel):getIndexTab(widget.pixel)),
-        tabs: _tabs,
-        onTap: (index){
-          // Scrollable.ensureVisible(widget.keys[index].currentContext!,duration: const Duration(milliseconds: 500), curve: Curves.fastOutSlowIn);
-          widget.scrollController.animateTo(getOffset(index), duration: const Duration(milliseconds: 500), curve: Curves.fastOutSlowIn);
-
-        },
-        labelColor: MyColors.primaryColor,
-        indicatorColor: MyColors.primaryColor,
-        dividerColor: Colors.transparent,
-        unselectedLabelColor: MyColors.secondaryColor,
-        indicatorSize: TabBarIndicatorSize.label,
-      ),
-    );
+    double width = MediaQuery.of(context).size.width;
+    return Scaffold(
+        backgroundColor: MyColors.backgroundColor,
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          forceMaterialTransparency: true,
+          toolbarHeight: 80,
+          centerTitle: true,
+          title: Container(
+              width: width * 0.25,
+              constraints: const BoxConstraints(minWidth: 200),
+              child: const FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    'Sudip Shrestha',
+                    style: MyTextStyle.headingStyle,
+                  ))),
+          bottom: TabBar(
+            controller: TabController(
+                length: 4,
+                vsync: this,
+                initialIndex: widget.navigationShell.currentIndex),
+            tabs: _tabs,
+            onTap: (index) {
+              widget.navigationShell.goBranch(index,
+                  initialLocation:
+                      index == widget.navigationShell.currentIndex);
+            },
+            labelColor: MyColors.primaryColor,
+            indicatorColor: MyColors.primaryColor,
+            dividerColor: Colors.transparent,
+            unselectedLabelColor: MyColors.secondaryColor,
+            indicatorSize: TabBarIndicatorSize.label,
+          ),
+        ),
+        body: widget.navigationShell);
   }
 }
 
 class MyTabBarMobile extends StatefulWidget {
-  const MyTabBarMobile({required this.keys,required this.pixel,required this.scrollController,super.key});
+  const MyTabBarMobile(
+      {required this.keys,
+      required this.pixel,
+      required this.scrollController,
+      super.key});
 
   final double pixel;
   final ScrollController scrollController;
@@ -62,21 +96,61 @@ class MyTabBarMobile extends StatefulWidget {
   State<MyTabBarMobile> createState() => _MyTabBarMobileState();
 }
 
-class _MyTabBarMobileState extends State<MyTabBarMobile>with TickerProviderStateMixin{
+class _MyTabBarMobileState extends State<MyTabBarMobile>
+    with TickerProviderStateMixin {
   final _tabs = const [
-    Tab(icon: FittedBox(fit:BoxFit.scaleDown,child: Text('Home',style: MyTextStyle.appBarStyle,)),),
-    Tab(icon: FittedBox(fit:BoxFit.scaleDown,child: Text('About Me',style: MyTextStyle.appBarStyle,)),),
-    Tab(icon: FittedBox(fit:BoxFit.scaleDown,child: Text('Journey',style: MyTextStyle.appBarStyle,)),),
-    Tab(icon: FittedBox(fit:BoxFit.scaleDown,child: Text('Project',style: MyTextStyle.appBarStyle,)),),
-    Tab(icon: FittedBox(fit:BoxFit.scaleDown,child: Text('Contact Me',style: MyTextStyle.appBarStyle,)),),
+    Tab(
+      icon: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            'Home',
+            style: MyTextStyle.appBarStyle,
+          )),
+    ),
+    Tab(
+      icon: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            'About Me',
+            style: MyTextStyle.appBarStyle,
+          )),
+    ),
+    Tab(
+      icon: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            'Journey',
+            style: MyTextStyle.appBarStyle,
+          )),
+    ),
+    Tab(
+      icon: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            'Project',
+            style: MyTextStyle.appBarStyle,
+          )),
+    ),
+    Tab(
+      icon: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            'Contact Me',
+            style: MyTextStyle.appBarStyle,
+          )),
+    ),
   ];
+
   @override
   Widget build(BuildContext context) {
     return TabBar(
-      controller: TabController(length: 5, vsync: this,initialIndex: getIndex(widget.pixel)),
+      controller: TabController(
+          length: 5, vsync: this, initialIndex: getIndex(widget.pixel)),
       tabs: _tabs,
-      onTap: (index){
-        Scrollable.ensureVisible(widget.keys[index].currentContext!,duration: const Duration(milliseconds: 500), curve: Curves.fastOutSlowIn);
+      onTap: (index) {
+        Scrollable.ensureVisible(widget.keys[index].currentContext!,
+            duration: const Duration(milliseconds: 500),
+            curve: Curves.fastOutSlowIn);
       },
       labelColor: MyColors.primaryColor,
       indicatorColor: MyColors.primaryColor,
@@ -86,54 +160,55 @@ class _MyTabBarMobileState extends State<MyTabBarMobile>with TickerProviderState
     );
   }
 }
-int getIndex(double pixel){
-  if(pixel < 400){
+
+int getIndex(double pixel) {
+  if (pixel < 400) {
     return 0;
-  }else if(pixel>400&&pixel<=1200){
+  } else if (pixel > 400 && pixel <= 1200) {
     return 1;
-  }else if(pixel>1200&&pixel<=2500){
+  } else if (pixel > 1200 && pixel <= 2500) {
     return 2;
-  }else if(pixel>2500&&pixel<=3200){
+  } else if (pixel > 2500 && pixel <= 3200) {
     return 3;
-  }
-  else if(pixel>3200){
+  } else if (pixel > 3200) {
     return 4;
-  }
-  else{
+  } else {
     return 0;
   }
 }
-int getIndexTab(double pixel){
-  if(pixel < 700){
+
+int getIndexTab(double pixel) {
+  if (pixel < 700) {
     return 0;
-  }else if(pixel>700&&pixel<=1700){
+  } else if (pixel > 700 && pixel <= 1700) {
     return 1;
-  }else if(pixel>1700&&pixel<=2800){
+  } else if (pixel > 1700 && pixel <= 2800) {
     return 2;
-  }else if(pixel>2800&&pixel<=3800){
+  } else if (pixel > 2800 && pixel <= 3800) {
     return 3;
-  }
-  else if(pixel>3800){
+  } else if (pixel > 3800) {
     return 4;
-  }
-  else{
+  } else {
     return 0;
   }
 }
-int getIndexMobile(double pixel){
-  if(pixel < 400){
+
+int getIndexMobile(double pixel) {
+  if (pixel < 400) {
     return 0;
-  }else if(pixel>400&&pixel<=1200){
+  } else if (pixel > 400 && pixel <= 1200) {
     return 1;
-  }else if(pixel>1200&&pixel<=2200){
+  } else if (pixel > 1200 && pixel <= 2200) {
     return 2;
-  }else if(pixel>2200&&pixel<=4000){
+  } else if (pixel > 2200 && pixel <= 4000) {
     return 3;
-  }
-  else if(pixel>4000){
+  } else if (pixel > 4000) {
     return 4;
-  }
-  else{
+  } else {
     return 0;
   }
 }
+
+// void onTap(BuildContext context,int index){
+//   Navigator.push(context, MaterialPageRoute(builder: (context) => LandingView()));
+// }

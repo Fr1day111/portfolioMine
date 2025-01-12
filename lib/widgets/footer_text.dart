@@ -11,7 +11,7 @@ class FooterText extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Center(
       child: Padding(
-        padding: EdgeInsets.only(bottom: 8.0),
+        padding: EdgeInsets.only(bottom: 16.0),
         child: Text(
           'Made with ♡ by Sudip Shrestha(Flutter Web)',
           style: MyTextStyle.aboutUsStyle,

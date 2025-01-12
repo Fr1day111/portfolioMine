@@ -41,13 +41,16 @@ dependencies:
   hooks_riverpod: ^2.1.3
   flutter_hooks: ^0.18.5+1
   flutter_animate: ^4.5.0
-  timelines: ^0.1.0
   animated_text_kit: ^4.2.2
   font_awesome_flutter: ^10.7.0
   url_launcher: ^6.2.5
   web_smooth_scroll: ^1.1.0
   emailjs: ^1.3.0
   envied: ^0.5.4+1
+  go_router: ^14.6.3
+  footer: ^0.0.4
+  flutter_svg: ^2.0.17
+  visibility_detector: ^0.4.0+2
 
 dev_dependencies:
   flutter_test:
@@ -77,7 +80,10 @@ flutter:
   assets:
    - assets/profilee.png
    - assets/aboutPhoto.jpg
+   - assets/me.JPG
+   - assets/mee.webp
    - assets/logo/
+   - assets/svg_icons/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

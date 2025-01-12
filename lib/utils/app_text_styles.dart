@@ -12,7 +12,7 @@ class MyTextStyle{
   static const subHeadingStyleMobile = TextStyle(fontFamily: 'Mina',
       fontSize: 30,color: MyColors.primaryColor);
   static const appBarStyle = TextStyle(fontFamily: 'Mina',
-      fontSize: 25,color: MyColors.primaryColor,fontWeight: FontWeight.bold);
+      fontSize: 15,color: MyColors.primaryColor,fontWeight: FontWeight.bold);
   static const aboutUsStyle = TextStyle(fontFamily: 'Mina',
       fontSize: 20,color: MyColors.primaryColor);
   static const aboutUsStyleMobile = TextStyle(fontFamily: 'Mina',

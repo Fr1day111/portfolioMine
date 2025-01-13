@@ -26,28 +26,28 @@ class _MySkillsViewState extends ConsumerState<MySkillsView> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 100.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const FittedBox(
-            fit: BoxFit.scaleDown,
-            child: Text(
-              'Technologies I have expertise with:',
-              style: MyTextStyle.subHeadingStyle,
+      child: VisibilityDetector(
+        key: const Key('Unique Key'),
+        onVisibilityChanged: (VisibilityInfo info) {
+          if (info.visibleFraction > 0 &&
+              !ref.read(skillsVisible.notifier).state) {
+            ref.read(skillsVisible.notifier).state = true;
+          }
+        },
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Text(
+                'Technologies I have expertise with:',
+                style: MyTextStyle.subHeadingStyle,
+              ),
             ),
-          ),
-          const SizedBox(
-            height: 50,
-          ),
-          VisibilityDetector(
-            key: const Key('Unique Key'),
-            onVisibilityChanged: (VisibilityInfo info) {
-              if (info.visibleFraction > 0 &&
-                  !ref.read(skillsVisible.notifier).state) {
-                ref.read(skillsVisible.notifier).state = true;
-              }
-            },
-            child: GridView.builder(
+            const SizedBox(
+              height: 50,
+            ),
+            GridView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: mySkills.length,
@@ -74,8 +74,8 @@ class _MySkillsViewState extends ConsumerState<MySkillsView> {
                         )),
                   );
                 }),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -109,13 +109,14 @@ class _SkillItemState extends State<SkillItem> {
       child: Tooltip(
         message: widget.skill.title,
         child: AnimatedContainer(
-          decoration: BoxDecoration(
-              color: isHover ? MyColors.primaryColor : MyColors.secondaryColor,
-              borderRadius: isHover
-                  ? BorderRadius.circular(100)
-                  : BorderRadius.circular(20)),
-          padding: const EdgeInsets.all(20),
           duration: const Duration(milliseconds: 200),
+          curve: Curves.easeInOut, // Add a curve for smoother animation
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            color: isHover ? MyColors.primaryColor : MyColors.secondaryColor,
+            borderRadius: isHover ? BorderRadius.circular(100) : BorderRadius.circular(20),
+          ),
+          padding: const EdgeInsets.all(20),
           child: Image.asset(
             widget.skill.photoPath,
           ),
